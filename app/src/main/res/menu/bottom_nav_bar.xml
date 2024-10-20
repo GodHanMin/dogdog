@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="홈"
+        android:id="@+id/home"
+        android:icon="@drawable/baseline_home_24"
+        />
+    <item android:title="캘린더"
+        android:id="@+id/calender"
+        android:icon="@drawable/baseline_calendar_today_24"
+        />
+    <item android:title="Item" />
+</menu>
