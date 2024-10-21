@@ -10,12 +10,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="170dp"
-        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="20dp"
         app:cardElevation="8dp"
         app:cardUseCompatPadding="true"
-        tools:ignore="MissingConstraints">
+        >
 
         <LinearLayout
             android:orientation="vertical"
@@ -43,11 +42,65 @@
 
                 />
 
+            <LinearLayout
+                android:id="@+id/pet_info_home"
+                android:background="@drawable/button_style"
+                android:layout_margin="20dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/pet_image_home"
+                    android:layout_marginLeft="25dp"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/baseline_calendar_today_24"
+                    app:civ_border_overlay="true"
+                    app:civ_border_width="1.5dp"
+                    app:civ_border_color="#655071"/>
+                
+                <LinearLayout
+
+                    android:layout_margin="10dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/pet_name_birth_home"
+                        android:textSize="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:text="수정(여) | 13개월"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/pet_kind_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:textSize="10dp"
+                        android:text="말티즈"
+
+                        />
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
 
 
+
+
     </androidx.cardview.widget.CardView>
+
+
+
 
 </FrameLayout>

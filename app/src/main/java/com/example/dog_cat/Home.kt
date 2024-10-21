@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 
 
 const val ARG_PARAM1 = "param1"
@@ -35,6 +36,22 @@ class Home : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        // 전달된 데이터를 가져옴
+        val petName = activity?.intent?.getStringExtra("pet_name")
+        val petKind = activity?.intent?.getStringExtra("pet_kind")
+        val petBirth = activity?.intent?.getStringExtra("pet_birth")
+        val petGender = activity?.intent?.getStringExtra("pet_gender")
+        val petNeutralization = activity?.intent?.getStringExtra("pet_neutralization")
+
+        // UI 요소 업데이트
+        val petNameBirthTextView: TextView = view.findViewById(R.id.pet_name_birth_home)
+        val petKindTextView: TextView = view.findViewById(R.id.pet_kind_home)
+
+        petNameBirthTextView.text = "$petName | $petGender | $petBirth"
+        petKindTextView.text = petKind
+
+
 
         // 버튼을 찾고 클릭 리스너를 설정
         val button: Button = view.findViewById(R.id.info_btn)

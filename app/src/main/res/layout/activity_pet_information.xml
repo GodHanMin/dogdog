@@ -63,51 +63,74 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="24dp"
                     android:text="이름"/>
 
                 <EditText
+                    android:id="@+id/pet_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:padding="5dp"
+                    android:background="@drawable/button_style"
+                    android:layout_marginBottom="30dp"
                     android:hint="반려동물의 이름을 입력하세요 "
                     />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textSize="24dp"
                     android:text="반려동물 종류"/>
 
                 <EditText
+                    android:id="@+id/pet_kind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="반려동물의 이름을 입력하세요 "
+                    android:textSize="15dp"
+                    android:padding="5dp"
+                    android:background="@drawable/button_style"
+                    android:layout_marginBottom="30dp"
+                    android:hint="반려동물의 종류를 입력하세요 "
                     />
 
                 <!-- 생년월일 -->
                 <TextView
-                    android:id="@+id/start_text"
+
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="생년월일"
-                    android:textSize="16sp" />
+                    android:textSize="24dp" />
 
-                <!-- 날짜 표시 텍스트 뷰 -->
-                <TextView
-                    android:id="@+id/start_date_text"
-                    android:layout_width="200dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="20dp"
-                    android:paddingHorizontal="5dp"
-                    android:gravity="center_vertical"
-                    android:textSize="16sp" />
+
 
                 <!-- 날짜 선택 버튼 -->
-                <ImageView
-                    android:id="@+id/start_date_btn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="20dp"
-                    android:clickable="true"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <!-- 날짜 표시 텍스트 뷰 -->
+                    <TextView
+                        android:id="@+id/pet_birth"
+                        android:layout_width="200dp"
+                        android:layout_height="40dp"
+                        android:paddingHorizontal="5dp"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/button_style"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:background="@drawable/baseline_calendar_month_24"
+                        android:id="@+id/start_date_btn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="20dp"
+                        android:clickable="true"/>
+
+                </LinearLayout>
+
+
 
                 <!-- 성별 -->
                 <TextView
@@ -120,6 +143,8 @@
 
                 <LinearLayout
                     android:orientation="horizontal"
+
+                    android:layout_marginBottom="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
@@ -178,9 +203,14 @@
                     android:text="체중"/>
 
                 <EditText
+                    android:id="@+id/pet_weight"
+                    android:layout_marginBottom="30dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="체중을 입력하세요 "
+                    android:textSize="15dp"
+                    android:padding="5dp"
+                    android:background="@drawable/button_style"
+                    android:hint="반려동물의 몸무게를 입력하세요  "
                     />
 
 
@@ -203,6 +233,7 @@
         android:orientation="horizontal">
 
         <Button
+            android:id="@+id/btn_del"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -210,6 +241,7 @@
             android:text="삭제" />
 
         <Button
+            android:id="@+id/btn_save"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
