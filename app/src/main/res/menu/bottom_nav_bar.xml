@@ -9,5 +9,13 @@
         android:id="@+id/calender"
         android:icon="@drawable/baseline_calendar_today_24"
         />
-    <item android:title="Item" />
+    <item android:title="유튜브"
+        android:id="@+id/youtube"
+        android:icon="@drawable/baseline_ondemand_video_24"
+        />
+
+    <item android:title="지도 검색"
+        android:id="@+id/map"
+        android:icon="@drawable/baseline_map_24"
+        />
 </menu>

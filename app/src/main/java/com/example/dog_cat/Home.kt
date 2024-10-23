@@ -1,6 +1,7 @@
 package com.example.dog_cat
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import de.hdodenhof.circleimageview.CircleImageView
 
 
 const val ARG_PARAM1 = "param1"
@@ -17,6 +19,11 @@ const val ARG_PARAM2 = "param2"
 class Home : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var petNameTextView: TextView
+    private lateinit var petKindTextView: TextView
+    private lateinit var petBirthTextView: TextView
+    private lateinit var petImageView: CircleImageView
 
 
 
@@ -37,29 +44,43 @@ class Home : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-        // 전달된 데이터를 가져옴
-        val petName = activity?.intent?.getStringExtra("pet_name")
-        val petKind = activity?.intent?.getStringExtra("pet_kind")
-        val petBirth = activity?.intent?.getStringExtra("pet_birth")
-        val petGender = activity?.intent?.getStringExtra("pet_gender")
-        val petNeutralization = activity?.intent?.getStringExtra("pet_neutralization")
+        // CircleImageView 초기화
+        petImageView = view.findViewById(R.id.pet_image_home)
 
-        // UI 요소 업데이트
-        val petNameBirthTextView: TextView = view.findViewById(R.id.pet_name_birth_home)
-        val petKindTextView: TextView = view.findViewById(R.id.pet_kind_home)
+        // Intent로부터 이미지 URI 가져오기
+        val petImageUrl = activity?.intent?.getStringExtra("PET_IMAGE_URL")
+        petImageUrl?.let {
+            petImageView.setImageURI(Uri.parse(it)) // 이미지 URI 설정
+        }
 
-        petNameBirthTextView.text = "$petName | $petGender | $petBirth"
+        petNameTextView = view.findViewById(R.id.pet_name_birth_home)
+        petKindTextView = view.findViewById(R.id.pet_kind_home)
+        petImageView = view.findViewById(R.id.pet_image_home)
+
+
+        val petName = activity?.intent?.getStringExtra("PET_NAME")
+        val petKind = activity?.intent?.getStringExtra("PET_KIND")
+        val petBirth = activity?.intent?.getStringExtra("PET_BIRTH")
+        val petGender = activity?.intent?.getStringExtra("PET_GENDER")
+        val petNeutered = activity?.intent?.getStringExtra("PET_NEUTRALIZED")
+        val petImageUriString = activity?.intent?.getStringExtra("PET_IMAGE_URI")
+        val petweight = activity?.intent?.getStringExtra("PET_WEIGHT")
+
+
+        petNameTextView.text = "$petName ($petGender) | $petBirth |   $petweight kg"
         petKindTextView.text = petKind
 
 
 
-        // 버튼을 찾고 클릭 리스너를 설정
+
+
         val button: Button = view.findViewById(R.id.info_btn)
         button.setOnClickListener {
-            // AppCompatActivity를 시작하는 Intent 생성
+
             val intent = Intent(requireContext(), Pet_Information::class.java)
             startActivity(intent)
         }
+
 
         return view
     }

@@ -26,14 +26,15 @@ class Pet_Information : AppCompatActivity() {
 
     private lateinit var button_img: Button
     private lateinit var imageView: ImageView
+    private var selectedImageUri: Uri? = null
 
 
     // ActivityResultLauncher로 이미지 선택 결과 처리
     private val imagePickerLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == RESULT_OK) {
-            val data: Intent? = result.data
-            val uri: Uri? = data?.data
-            imageView.setImageURI(uri)  // 선택한 이미지 표시
+            var data: Intent? = result.data
+            selectedImageUri = data?.data
+            imageView.setImageURI(selectedImageUri)  // 선택한 이미지 표시
         }
     }
 
@@ -56,6 +57,7 @@ class Pet_Information : AppCompatActivity() {
         var pet_birth_data : String
         var pet_gender_data : Boolean =true
         var pet_neu_data : Boolean = true
+        var pet_weight_data : String
 
         var pet_gender_str : String
         var pet_neu_str : String = "했어요"
@@ -63,6 +65,7 @@ class Pet_Information : AppCompatActivity() {
         var petname = findViewById<EditText>(R.id.pet_name)
         var petkind = findViewById<EditText>(R.id.pet_kind)
         var petbirth = findViewById<TextView>(R.id.pet_birth)
+        var petweight = findViewById<TextView>(R.id.pet_weight)
 
 
 
@@ -115,6 +118,7 @@ class Pet_Information : AppCompatActivity() {
             pet_name_data  = petname.text.toString()
             pet_kind_data  = petkind.text.toString()
             pet_birth_data  = petbirth.text.toString()
+            pet_weight_data  = petweight.text.toString()
 
             if(pet_gender_data == true)
             {
@@ -129,17 +133,23 @@ class Pet_Information : AppCompatActivity() {
                 pet_neu_str = "했어요"
             }
             else{
-                pet_gender_str = "안했어요"
+                pet_neu_str = "안했어요"
             }
 
-            // Intent에 데이터를 담아 Home 액티비티로 전달
-            val intent = Intent(this, Home::class.java).apply {
-                putExtra("pet_name", pet_name_data)
-                putExtra("pet_kind", pet_kind_data)
-                putExtra("pet_birth", pet_birth_data)
-                putExtra("pet_gender", pet_gender_str)
-                putExtra("pet_neutralization", pet_neu_str)
+
+
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("PET_NAME", pet_name_data)
+            intent.putExtra("PET_KIND", pet_kind_data)
+            intent.putExtra("PET_BIRTH", pet_birth_data)
+            intent.putExtra("PET_GENDER", pet_gender_str)
+            intent.putExtra("PET_NEUTRALIZED", pet_neu_str)
+            intent.putExtra("PET_WEIGHT", pet_weight_data)
+
+            if (::imageView.isInitialized) {
+                intent.putExtra("PET_IMAGE_URL", selectedImageUri.toString()) // URI 문자열로 변환하여 전송
             }
+
             startActivity(intent)
 
 

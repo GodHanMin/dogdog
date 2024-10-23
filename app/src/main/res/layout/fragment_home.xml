@@ -69,10 +69,10 @@
 
                     <TextView
                         android:id="@+id/pet_name_birth_home"
-                        android:textSize="12dp"
                         android:layout_width="match_parent"
                         android:layout_height="20dp"
                         android:text="수정(여) | 13개월"
+                        android:textSize="12dp"
 
                         />
 
