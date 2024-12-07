@@ -42,7 +42,6 @@ android {
 
 dependencies {
 
-
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     implementation ("com.github.dhaval2404:imagepicker:2.1")
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.3")
