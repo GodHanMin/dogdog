@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 오늘 하루 평가 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. 오늘 전체적인 하루는"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp" />
+
+        <!-- 라디오 그룹으로 평가 선택 -->
+        <RadioGroup
+            android:id="@+id/radioGroupOverall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioOverallMinus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-2" />
+
+            <RadioButton
+                android:id="@+id/radioOverallMinus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-1" />
+
+            <RadioButton
+                android:id="@+id/radioOverallZero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+
+            <RadioButton
+                android:id="@+id/radioOverallPlus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <RadioButton
+                android:id="@+id/radioOverallPlus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2" />
+        </RadioGroup>
+
+        <!-- 산책 컨디션 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2. 오늘 산책 컨디션은"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupCondition"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioConditionMinus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-2" />
+
+            <RadioButton
+                android:id="@+id/radioConditionMinus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-1" />
+
+            <RadioButton
+                android:id="@+id/radioConditionZero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0" />
+
+            <RadioButton
+                android:id="@+id/radioConditionPlus1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1" />
+
+            <RadioButton
+                android:id="@+id/radioConditionPlus2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2" />
+        </RadioGroup>
+
+        <!-- 특이사항 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. 특이사항"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/etSpecialNotes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="특이사항을 입력해주세요"
+            android:padding="8dp"
+            android:background="#EAEAEA"
+            android:textColor="#000" />
+
+        <!-- 완료 버튼 -->
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#2196F3"
+            android:textColor="#FFF"
+            android:text="완료" />
+
+    </LinearLayout>
+</ScrollView>
