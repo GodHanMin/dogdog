@@ -21,7 +21,7 @@
         android:padding="8dp"
         android:visibility="gone"
         android:text="요약 정보"
-        android:background="#EAEAEA"
+        android:background="@drawable/card_background"
         android:textColor="#000" />
 
     <!-- 작성하기 버튼 -->

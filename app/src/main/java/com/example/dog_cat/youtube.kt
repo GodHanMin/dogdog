@@ -23,8 +23,11 @@ class youtube : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         val videoList = listOf(
-            YoutubeVideo("첫 번째 영상", R.drawable.baseline_ondemand_video_24, "https://www.youtube.com/watch?v=zEtSQG_CG5Q&t=8766s"),
-            YoutubeVideo("두 번째 영상", R.drawable.baseline_ondemand_video_24, "https://www.youtube.com/watch?v=0l2N2CEiniY"),
+            YoutubeVideo("초보 보호자라면 꼭 봐야하는 5가지 주의사항", R.drawable.youtu_1, "https://www.youtube.com/watch?v=vUzlV1xwc38"),
+            YoutubeVideo("강아지 보호자들이 나도 모르게 하는 실수", R.drawable.youtu3, "https://www.youtube.com/watch?v=dVJTmn0n7Pc"),
+            YoutubeVideo("강아지 혼자 놔두고 갈떄 주의사항 4가지", R.drawable.youtu4, "https://www.youtube.com/watch?v=lYjXMLfzO4E"),
+            YoutubeVideo("강아지가 행복할떄 하는 행동 9가지", R.drawable.youtu5, "https://www.youtube.com/watch?v=PsujKxMzNEs"),
+            YoutubeVideo("[#티전드] 나는 몰랐던 반려견의 속마음\uD83E\uDD7A '강아지 강씨' 강형욱이 이것만은 꼭 지켜달라는 상식은? 강아지 백과사전 A~Z까지 ", R.drawable.youtu2, "https://www.youtube.com/watch?v=vUzlV1xwc38"),
         )
 
         adapter = YoutubeAdapter(requireContext(), videoList)

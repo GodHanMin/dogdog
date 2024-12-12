@@ -1,31 +1,32 @@
 package com.example.dog_cat
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.Fragment
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM5 = "param1"
-private const val ARG_PARAM6 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [map_frg.newInstance] factory method to
- * create an instance of this fragment.
- */
 class map_frg : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM5)
-            param2 = it.getString(ARG_PARAM6)
+    private lateinit var contentLayout: LinearLayout
+
+    // ActivityResultLauncher를 사용해 데이터를 받음
+    private val writeMemoLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == -1) {
+            val data: Intent? = result.data
+            val imageUri = data?.getStringExtra("imageUri")?.let { Uri.parse(it) }
+            val placeName = data?.getStringExtra("placeName")
+            val placeAddress = data?.getStringExtra("placeAddress")
+            val placeMemo = data?.getStringExtra("placeMemo")
+
+            addContent(imageUri, placeName, placeAddress, placeMemo)
         }
     }
 
@@ -33,27 +34,37 @@ class map_frg : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map_frg, container, false)
+        val view = inflater.inflate(R.layout.fragment_map_frg, container, false)
+
+        // 컨텐츠 레이아웃 초기화
+        contentLayout = view.findViewById(R.id.content_layout)
+
+        // 버튼 클릭 리스너 설정
+        val writeButton: Button = view.findViewById(R.id.btn_write)
+        writeButton.setOnClickListener {
+            val intent = Intent(requireContext(), write_memo::class.java)
+            writeMemoLauncher.launch(intent)
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment map_frg.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            map_frg().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM5, param1)
-                    putString(ARG_PARAM6, param2)
-                }
-            }
+    private fun addContent(imageUri: Uri?, placeName: String?, placeAddress: String?, placeMemo: String?) {
+        //  뷰를 동적으로 생성
+        val itemView = layoutInflater.inflate(R.layout.item_memo, contentLayout, false)
+
+        val imageView: ImageView = itemView.findViewById(R.id.thumbnail)
+        val nameView: TextView = itemView.findViewById(R.id.title)
+        val addressView: TextView = itemView.findViewById(R.id.address)
+        val memoView: TextView = itemView.findViewById(R.id.memo)
+
+        // 데이터 설정
+        imageUri?.let { imageView.setImageURI(it) }
+        nameView.text = placeName ?: "장소 이름 없음"
+        addressView.text = placeAddress ?: "주소 없음"
+        memoView.text = placeMemo ?: "특징 없음"
+
+        // 레이아웃에 추가
+        contentLayout.addView(itemView)
     }
 }
